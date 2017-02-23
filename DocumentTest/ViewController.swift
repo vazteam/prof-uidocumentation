@@ -54,7 +54,7 @@ class ViewController: UIViewController, UIDocumentInteractionControllerDelegate 
     
     func jumpStoreSite() {
         //PROFのストアに飛ばす
-        UIApplication.shared.open( URL(string: "https://itunes.apple.com/jp/app/prof-3shi-jiande-xiaoerusns/id1076211312?mt=8" )!, options: [:], completionHandler: nil)
+        UIApplication.shared.open( URL(string: "https://app.adjust.com/ouu11h" )!, options: [:], completionHandler: nil)
     }
     
     //UIDocumentInteractionControllerを使用して画像とテキストを送る 片方だけでも可
@@ -75,7 +75,7 @@ class ViewController: UIViewController, UIDocumentInteractionControllerDelegate 
         
         interactionController = UIDocumentInteractionController(url: url!)
         interactionController?.delegate = self
-        interactionController?.annotation = ["json" : "{\"text\": \"asdefafadaqfrqefsdcadsfsrgsfsf\",\"tag_id\": \"dhsuhwufhusdhu\"}"]
+        interactionController?.annotation = ["json" : "{\"text\": \"サンプルテキスト\",\"tag_id\": \"1\"}"]
         interactionController?.uti = "public.png"
         
         if !interactionController.presentOpenInMenu(from: view.frame, in: view, animated: true) {
@@ -88,7 +88,7 @@ class ViewController: UIViewController, UIDocumentInteractionControllerDelegate 
         
         // 作成するテキストファイルの名前
         let textFileName = "test.txt"       //拡張子が.txtならファイル名はなんでも可
-        let initialText = "{\"text\": \"asdefafadaqfrqefsdcadsfsrgsfsf\",\"tag_id\": \"dhsuhwufhusdhu\"}"   //送りたいテキストをJSONにして送る　tag_idはPROFでは現在未実装
+        let initialText = "{\"text\": \"サンプルテキスト\",\"tag_id\": \"1\"}"   //送りたいテキストをJSONにして送る　tag_idはPROFでは現在未実装
         
         // ディレクトリのパスにファイル名をつなげてファイルのフルパスを作る
         let targetTextFilePath = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(textFileName)
@@ -114,7 +114,7 @@ class ViewController: UIViewController, UIDocumentInteractionControllerDelegate 
     func openURL() {
         
         let image = #imageLiteral(resourceName: "test")         //送りたい画像
-        let text = "sssssss"    //送りたいテキスト
+        let text = "PROF URLスキーマ テスト"    //送りたいテキスト
         
         let imageData = UIImagePNGRepresentation(image)
         var imageBase64String: String = (imageData?.base64EncodedString(options: Data.Base64EncodingOptions.endLineWithLineFeed))!
