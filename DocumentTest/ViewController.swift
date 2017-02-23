@@ -48,22 +48,25 @@ class ViewController: UIViewController, UIDocumentInteractionControllerDelegate 
     }
     
     func isOpenApp() -> Bool {
+        //PROFがインストールされているか確認
         return UIApplication.shared.canOpenURL( URL(string:"prof://")! )
     }
     
     func jumpStoreSite() {
+        //PROFのストアに飛ばす
         UIApplication.shared.open( URL(string: "https://itunes.apple.com/jp/app/prof-3shi-jiande-xiaoerusns/id1076211312?mt=8" )!, options: [:], completionHandler: nil)
     }
     
+    //UIDocumentInteractionControllerを使用して画像とテキストを送る 片方だけでも可
     func sendImageAndText() {
         
         // 送る対象の画像
-        let image = #imageLiteral(resourceName: "test")
+        let image = #imageLiteral(resourceName: "test")     //送りたい画像
         
         let data = UIImagePNGRepresentation(image)
         
         // ファイル一時保存してNSURLを取得
-        let url = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("test.png")
+        let url = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("test.png") //ファイル名はなんでもか　ただし.png or .jpgのみ
         do {
             try data?.write(to: url!, options: Data.WritingOptions.atomicWrite)
         } catch {
@@ -80,11 +83,12 @@ class ViewController: UIViewController, UIDocumentInteractionControllerDelegate 
         }
     }
     
+    //UIDocumentInteractionControllerを使用してテキストを送る
     func sendTextFile() {
         
         // 作成するテキストファイルの名前
-        let textFileName = "test.txt"
-        let initialText = "{\"text\": \"asdefafadaqfrqefsdcadsfsrgsfsf\",\"tag_id\": \"dhsuhwufhusdhu\"}"
+        let textFileName = "test.txt"       //拡張子が.txtならファイル名はなんでも可
+        let initialText = "{\"text\": \"asdefafadaqfrqefsdcadsfsrgsfsf\",\"tag_id\": \"dhsuhwufhusdhu\"}"   //送りたいテキストをJSONにして送る　tag_idはPROFでは現在未実装
         
         // ディレクトリのパスにファイル名をつなげてファイルのフルパスを作る
         let targetTextFilePath = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(textFileName)
@@ -106,10 +110,12 @@ class ViewController: UIViewController, UIDocumentInteractionControllerDelegate 
         }
     }
     
+    //URLスキームを使用して画像とテキストを送る　片方だけでも可
     func openURL() {
         
-        let image = #imageLiteral(resourceName: "test")
-        let text = "sssssss"
+        let image = #imageLiteral(resourceName: "test")         //送りたい画像
+        let text = "sssssss"    //送りたいテキスト
+        
         let imageData = UIImagePNGRepresentation(image)
         var imageBase64String: String = (imageData?.base64EncodedString(options: Data.Base64EncodingOptions.endLineWithLineFeed))!
         
@@ -120,4 +126,3 @@ class ViewController: UIViewController, UIDocumentInteractionControllerDelegate 
         UIApplication.shared.open(url as! URL, options: [:] ) { (finish: Bool) in }
     }
 }
-
