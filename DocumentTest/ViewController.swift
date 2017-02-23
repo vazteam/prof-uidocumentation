@@ -114,15 +114,17 @@ class ViewController: UIViewController, UIDocumentInteractionControllerDelegate 
     func openURL() {
         
         let image = #imageLiteral(resourceName: "test")         //送りたい画像
-        let text = "PROF URLスキーマ テスト"    //送りたいテキスト
+        var text = "PROFURLスキーマテスト"    //送りたいテキスト
         
         let imageData = UIImagePNGRepresentation(image)
         var imageBase64String: String = (imageData?.base64EncodedString(options: Data.Base64EncodingOptions.endLineWithLineFeed))!
         
-        //パース時のミス回避のため
-        imageBase64String = imageBase64String.replacingOccurrences(of: "=", with: "@@")
+        //パース時のミス回避のためURLエンコード
+        imageBase64String = imageBase64String.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
+        text = text.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
         
-        let url = NSURL(string: "prof://UIDocumantation/q?image=\(imageBase64String)&text=\(text)")
+        let urlString = "prof://UIDocumantation/q?image=\(imageBase64String)&text=\(text)"
+        let url = NSURL(string: urlString)
         UIApplication.shared.open(url as! URL, options: [:] ) { (finish: Bool) in }
     }
 }
