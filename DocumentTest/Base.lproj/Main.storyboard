@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="DocumentTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tIL-0o-PUB">
+                                <rect key="frame" x="58" y="97" width="259" height="61"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="61" id="9Ya-fL-wZg"/>
+                                    <constraint firstAttribute="width" constant="259" id="Lgh-nY-PZ5"/>
+                                </constraints>
+                                <state key="normal" title="ImageAndText"/>
+                                <connections>
+                                    <action selector="onPushOpenButton" destination="BYZ-38-t0r" eventType="touchUpInside" id="LQf-ds-suR"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lvd-1o-6zM">
+                                <rect key="frame" x="58" y="233" width="259" height="61"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="259" id="gCz-kP-2eg"/>
+                                    <constraint firstAttribute="height" constant="61" id="kVG-n8-YSA"/>
+                                </constraints>
+                                <state key="normal" title="TextFile"/>
+                                <connections>
+                                    <action selector="onPushTextButton" destination="BYZ-38-t0r" eventType="touchUpInside" id="gQT-cY-zTD"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pjj-Zs-0dz">
+                                <rect key="frame" x="58" y="364" width="259" height="61"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="61" id="9Bv-pn-9Ku"/>
+                                    <constraint firstAttribute="width" constant="259" id="m9C-fe-lXa"/>
+                                </constraints>
+                                <state key="normal" title="openURL"/>
+                                <connections>
+                                    <action selector="onPushOpenURL" destination="BYZ-38-t0r" eventType="touchUpInside" id="WAp-j7-7qk"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="tIL-0o-PUB" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="77" id="MQC-ap-Csg"/>
+                            <constraint firstItem="pjj-Zs-0dz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Ob5-hK-7vg"/>
+                            <constraint firstItem="lvd-1o-6zM" firstAttribute="top" secondItem="tIL-0o-PUB" secondAttribute="bottom" constant="75" id="at4-mt-oGj"/>
+                            <constraint firstItem="lvd-1o-6zM" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="42" id="gOu-KE-sn0"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="lvd-1o-6zM" secondAttribute="trailing" constant="42" id="guY-Fh-fV0"/>
+                            <constraint firstItem="pjj-Zs-0dz" firstAttribute="top" secondItem="lvd-1o-6zM" secondAttribute="bottom" constant="70" id="hAa-dy-gJU"/>
+                            <constraint firstItem="tIL-0o-PUB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="iH5-ms-FHg"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-132" y="123.68815592203899"/>
+        </scene>
+    </scenes>
+</document>
