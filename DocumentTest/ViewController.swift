@@ -129,7 +129,7 @@ class ViewController: UIViewController, UIDocumentInteractionControllerDelegate 
         text = text.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
         text = text.replacingOccurrences(of: "=", with: "**")
         
-        let urlString = "prof://UIDocumantation/q?image=\(imageBase64String)&text=\(text)&tagId=\(tag.description)"
+        let urlString = "prof://UIDocumantation/q?image=\(imageBase64String)&text=\(text)&tagId=\(tag)"
         let url = NSURL(string: urlString)
         UIApplication.shared.open(url as! URL, options: [:] ) { (finish: Bool) in }
     }
