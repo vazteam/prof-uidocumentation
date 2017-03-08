@@ -75,7 +75,7 @@ class ViewController: UIViewController, UIDocumentInteractionControllerDelegate 
         
         interactionController = UIDocumentInteractionController(url: url!)
         interactionController?.delegate = self
-        interactionController?.annotation = ["json" : "{\"text\": \"サンプルテキスト\",\"tag_id\": \"1\"}"]
+        interactionController?.annotation = ["json" : "{\"text\": \"サンプルテキスト\",\"tagId\": \"2246607\"}"]
         interactionController?.uti = "public.png"
         
         if !interactionController.presentOpenInMenu(from: view.frame, in: view, animated: true) {
@@ -88,7 +88,7 @@ class ViewController: UIViewController, UIDocumentInteractionControllerDelegate 
         
         // 作成するテキストファイルの名前
         let textFileName = "test.txt"       //拡張子が.txtならファイル名はなんでも可
-        let initialText = "{\"text\": \"サンプルテキスト\",\"tag_id\": \"1\"}"   //送りたいテキストをJSONにして送る　tag_idはPROFでは現在未実装
+        let initialText = "{\"text\": \"サンプルテキスト\",\"tagId\": \"2246607\"}"   //送りたいテキストをJSONにして送る
         
         // ディレクトリのパスにファイル名をつなげてファイルのフルパスを作る
         let targetTextFilePath = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(textFileName)
@@ -113,8 +113,9 @@ class ViewController: UIViewController, UIDocumentInteractionControllerDelegate 
     //URLスキームを使用して画像とテキストを送る　片方だけでも可
     func openURL() {
         
-        let image = #imageLiteral(resourceName: "test")         //送りたい画像
-        var text = "PROF URL スキーマテスト"    //送りたいテキスト
+        let image   = #imageLiteral(resourceName: "test")         //送りたい画像
+        var text    = "PROF URL スキーマテスト"    //送りたいテキスト
+        let tag:Int = 2246607   //タグのデフォルト値
         
         let imageData = UIImagePNGRepresentation(image)
         var imageBase64String: String = (imageData?.base64EncodedString(options: Data.Base64EncodingOptions.lineLength64Characters))!
@@ -128,7 +129,7 @@ class ViewController: UIViewController, UIDocumentInteractionControllerDelegate 
         text = text.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
         text = text.replacingOccurrences(of: "=", with: "**")
         
-        let urlString = "prof://UIDocumantation/q?image=\(imageBase64String)&text=\(text)"
+        let urlString = "prof://UIDocumantation/q?image=\(imageBase64String)&text=\(text)&tagId=\(tag.description)"
         let url = NSURL(string: urlString)
         UIApplication.shared.open(url as! URL, options: [:] ) { (finish: Bool) in }
     }
